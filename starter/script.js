@@ -99,8 +99,11 @@ $(document).ready(function () {
 
       $("#forecast").empty();
       $("#forecast").append("<h2> 5-Day Forecast</h2>");
-
-      forecastList.forEach(function(forecast){
+      
+      //This variables filters the forecast list for entries with time 12:00:00
+      let filteredForecast = forecastList.filter(entry => entry.dt_txt.includes("12:00:00"));
+      
+      filteredForecast.forEach(function(forecast){
         let forecastDate = dayjs(forecast.dt_txt).format('MMMM D YYYY');
         let forecastTemperature = forecast.main.temp;
         let forecastHumidity = forecast.main.humidity;
