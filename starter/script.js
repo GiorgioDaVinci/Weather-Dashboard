@@ -58,7 +58,7 @@ $(document).ready(function () {
         if (currentWeather.main.temp) {
           // converts the temperature from Kelvin to Celsius
           let weather = (currentWeather.main.temp) - 273.15
-          $("#today").append("<p>Temperature: " + weather + "°C</p>");
+          $("#today").append("<p>Temperature: " + weather.toFixed(2) + "°C</p>");
         }
   
         // Displays humidity 
