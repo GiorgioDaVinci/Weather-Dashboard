@@ -11,7 +11,18 @@ $(document).ready(function () {
 
     // This calls the function cityWeather with the user input
     cityWeather(cityName);
+
+    // This adds the city name to the search history
+    addToSearchHistory(cityName)
   });
+
+  // Adding a click event handler for the search history items
+  $("#history").on("click", ".history.item", function(){
+    let cityName = $(this).text();
+
+    // Calling the function cityWeather to fetch weather data and update UI
+    cityWeather(cityName);
+  })
 
   // This function fetches the weather data
   function cityWeather(cityName){
@@ -73,13 +84,49 @@ $(document).ready(function () {
       } else {
         console.error('Missing main or wind property in current weather data.');
       }
+      displayForecast(data);
     } else {
       console.error('Invalid data format or empty data.');
     }
+
+  }
+
+  function displayForecast(data){
+    console.log("Received data:", data);
+
+    if(data.list && data.list.length > 0){
+      let forecastList = data.list;
+
+      $("#forecast").empty();
+      $("#forecast").append("<h2> 5-Day Forecast</h2>");
+
+      forecastList.forEach(function(forecast){
+        let forecastDate = dayjs(forecast.dt_txt).format('MMMM D YYYY');
+        let forecastTemperature = forecast.main.temp;
+        let forecastHumidity = forecast.main.humidity;
+
+        let forecastItem = $("<div class='col-md-2 forecast-item'></div> ");
+        forecastItem.append("<p>Date:" + forecastDate+ "</p>");
+        forecastItem.append("<p>Temperature:" + forecastTemperature + "°C</p>");
+        forecastItem.append("<p>Humidity:" + forecastHumidity + "%</p>");
+
+        $("#forecast").append(forecastItem);
+      });
+    }else{
+      console.error("Invalid forecast format")
+    }
   }
   
-  
-  
+  // Adding cities to the search history
+
+  function addToSearchHistory(cityName){
+    // This variable creates the history item
+    let historyItem = $("<a href='#' class = list-group-item list-group-item-action history-item>" +cityName+ "</a>");
+  // Adds history item to the history list
+  $("#history").append(historyItem);
+  }
+
+
 });
 
 
