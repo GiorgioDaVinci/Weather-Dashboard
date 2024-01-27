@@ -105,13 +105,13 @@ $(document).ready(function () {
       
       filteredForecast.forEach(function(forecast){
         let forecastDate = dayjs(forecast.dt_txt).format('MMMM D YYYY');
-        let forecastTemperature = forecast.main.temp;
+        let forecastTemperature = (forecast.main.temp-273.15).toFixed(2);
         let forecastHumidity = forecast.main.humidity;
 
         let forecastItem = $("<div class='col-md-2 forecast-item'></div> ");
-        forecastItem.append("<p>Date:" + forecastDate+ "</p>");
-        forecastItem.append("<p>Temperature:" + forecastTemperature + "°C</p>");
-        forecastItem.append("<p>Humidity:" + forecastHumidity + "%</p>");
+        forecastItem.append("<p>Date: " + forecastDate+ "</p>");
+        forecastItem.append("<p>Temperature: " + forecastTemperature + "°C</p>");
+        forecastItem.append("<p>Humidity: " + forecastHumidity + "%</p>");
 
         $("#forecast").append(forecastItem);
       });
