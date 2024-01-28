@@ -84,6 +84,14 @@ $(document).ready(function () {
         if (currentWeather.wind.speed) {
           $("#today").append("<p>Wind Speed: " + currentWeather.wind.speed + " m/s</p>");
         }
+
+        
+
+        // To display the weather icon
+        if(currentWeather.weather && currentWeather.weather[0] && currentWeather.weather[0].icon){
+          let weatherIcon = "<img src='https://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + ".png' alt='Weather Icon'>";
+          $("#today").append(weatherIcon);
+        }
       } else {
         console.error('Missing main or wind property in current weather data.');
       }
@@ -119,6 +127,7 @@ $(document).ready(function () {
         forecastItem.append("<p>Wind: " + forecastWind + "m/s</p>");
 
         $("#forecast").append(forecastItem);
+        
       });
     }else{
       console.error("Invalid forecast format")
