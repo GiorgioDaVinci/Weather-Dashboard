@@ -130,8 +130,13 @@ $(document).ready(function () {
 
     // This variable creates the history item
     let historyItem = $("<a href='#' class='list-group-item history-item'>" + cityName + "</a>");
+
+    // This will remove older items in history if they are more than 5
+    if($("#history .history-item").length>=5){
+      $("#history .history-item:last").remove();
+    }
   // Adds history item to the history list
-  $("#history").append(historyItem);
+  $("#history").prepend(historyItem);
 
   // Saves search history to local storage
   saveSearchHistory();
