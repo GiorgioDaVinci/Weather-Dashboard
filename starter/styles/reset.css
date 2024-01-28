@@ -1,12 +1,25 @@
-#today{
+#today {
     padding-left: 20px;
     border: 2px solid black;
-}
-.list-group-item{
-    margin-top: 22px;
+  }
+  
+  .list-group-item {
+    margin-top: 10px;
     background-color: rgb(174, 173, 173);
-}
-.forecast-item{
+  }
+  
+  .forecast-item {
     background-color: lightblue;
     margin: 8px;
-}
+  }
+  
+  #search-button {
+    
+    margin-left: 2px;
+  }
+  
+  .form-label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  

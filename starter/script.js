@@ -112,7 +112,7 @@ $(document).ready(function () {
         let forecastHumidity = forecast.main.humidity;
 
         let forecastItem = $("<div class='col-md-2 forecast-item border border-primary'></div> ");
-        forecastItem.append("<p>Date: " + forecastDate+ "</p>");
+        forecastItem.append("<p>Date: " + forecastDate + "</p>");
         forecastItem.append("<p>Temperature: " + forecastTemperature + "°C</p>");
         forecastItem.append("<p>Humidity: " + forecastHumidity + "%</p>");
 
