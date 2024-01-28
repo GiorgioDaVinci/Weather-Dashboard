@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+  // Loads search history from local storage
+  loadSearchHistory();
+
   // A submit event handler for the form
   $("#search-form").submit(function(event){
 
@@ -12,8 +15,8 @@ $(document).ready(function () {
     // This calls the function cityWeather with the user input
     cityWeather(cityName);
 
-    // This adds the city name to the search history
-    addToSearchHistory(cityName)
+    // this adds the city name to search history and saves it to local storage
+    addToSearchHistory(cityName);
   });
 
   // Adding a click event handler for the search history items
@@ -104,7 +107,7 @@ $(document).ready(function () {
       let filteredForecast = forecastList.filter(entry => entry.dt_txt.includes("12:00:00"));
       
       filteredForecast.forEach(function(forecast){
-        let forecastDate = dayjs(forecast.dt_txt).format('MMMM D YYYY');
+        let forecastDate = dayjs(forecast.dt_txt).format('MMMM D, YYYY');
         let forecastTemperature = (forecast.main.temp-273.15).toFixed(2);
         let forecastHumidity = forecast.main.humidity;
 
@@ -121,14 +124,42 @@ $(document).ready(function () {
   }
   
   // Adding cities to the search history
-
   function addToSearchHistory(cityName){
+
     // This variable creates the history item
-    let historyItem = $("<a href='#' class = list-group-item  list-group-item-action history-item>" +cityName+ "</a>");
+    let historyItem = $("<a href='#' class='list-group-item history-item'>" + cityName + "</a>");
   // Adds history item to the history list
   $("#history").append(historyItem);
+
+  // Saves search history to local storage
+  saveSearchHistory();
   }
 
+function saveSearchHistory(){
+  let searchHistory = [];
+
+  // Iterates over the search history item and adds their texts to the search history array
+
+  $("#history .history-item").each(function(){
+    searchHistory.push($(this).text());
+  });
+
+  // Saves the search history array to local storage
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+}
+
+// Loads search history from local storage
+function loadSearchHistory(){
+  let searchHistory = localStorage.getItem("searchHistory");
+  if(searchHistory){
+    searchHistory = JSON.parse(searchHistory);
+
+    // This iterates over the search history array and adds each item to the search history list
+    searchHistory.forEach(function(cityName){
+      addToSearchHistory(cityName);
+    });
+  }
+}
 
 });
 
