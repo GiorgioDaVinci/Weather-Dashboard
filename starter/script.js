@@ -107,13 +107,13 @@ $(document).ready(function () {
       let filteredForecast = forecastList.filter(entry => entry.dt_txt.includes("12:00:00"));
       
       filteredForecast.forEach(function(forecast){
-        let forecastDate = dayjs(forecast.dt_txt).format('MMMM D, YYYY');
+        let forecastDate = dayjs(forecast.dt_txt).format('MM/DD/YYYY');
         let forecastTemperature = (forecast.main.temp-273.15).toFixed(2);
         let forecastHumidity = forecast.main.humidity;
 
         let forecastItem = $("<div class='col-md-2 forecast-item border border-primary'></div> ");
-        forecastItem.append("<p>Date: " + forecastDate + "</p>");
-        forecastItem.append("<p>Temperature: " + forecastTemperature + "°C</p>");
+        forecastItem.append("<p><strong>Date: " + forecastDate + "</strong></p>");
+        forecastItem.append("<p>Temp: " + forecastTemperature + "°C</p>");
         forecastItem.append("<p>Humidity: " + forecastHumidity + "%</p>");
 
         $("#forecast").append(forecastItem);
