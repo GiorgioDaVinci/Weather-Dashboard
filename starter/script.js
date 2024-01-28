@@ -20,12 +20,12 @@ $(document).ready(function () {
   });
 
   // Adding a click event handler for the search history items
-  $("#history").on("click", ".history.item", function(){
+  $("#history").on("click", ".history-item", function(){
     let cityName = $(this).text();
 
     // Calling the function cityWeather to fetch weather data and update UI
     cityWeather(cityName);
-  })
+  });
 
   // This function fetches the weather data
   function cityWeather(cityName){
