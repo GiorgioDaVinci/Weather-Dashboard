@@ -59,7 +59,7 @@ $(document).ready(function () {
       let currentDate = dayjs().format('MMMM D, YYYY');
   
       // Displays the date
-      $("#today").append("<p>Date: " + currentDate + "</p>");
+      $("#today").append("<p><strong>Date: " + currentDate + "</strong></p>");
   
       // Assumes that the first item in the list array represents current weather
       let currentWeather = data.list[0];
@@ -108,7 +108,7 @@ $(document).ready(function () {
         let forecastTemperature = (forecast.main.temp-273.15).toFixed(2);
         let forecastHumidity = forecast.main.humidity;
 
-        let forecastItem = $("<div class='col-md-2 forecast-item'></div> ");
+        let forecastItem = $("<div class='col-md-2 forecast-item border border-primary'></div> ");
         forecastItem.append("<p>Date: " + forecastDate+ "</p>");
         forecastItem.append("<p>Temperature: " + forecastTemperature + "°C</p>");
         forecastItem.append("<p>Humidity: " + forecastHumidity + "%</p>");
@@ -124,7 +124,7 @@ $(document).ready(function () {
 
   function addToSearchHistory(cityName){
     // This variable creates the history item
-    let historyItem = $("<a href='#' class = list-group-item list-group-item-action history-item>" +cityName+ "</a>");
+    let historyItem = $("<a href='#' class = list-group-item  list-group-item-action history-item>" +cityName+ "</a>");
   // Adds history item to the history list
   $("#history").append(historyItem);
   }
