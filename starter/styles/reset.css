@@ -2,3 +2,11 @@
     padding-left: 20px;
     border: 2px solid black;
 }
+.list-group-item{
+    margin-top: 22px;
+    background-color: rgb(174, 173, 173);
+}
+.forecast-item{
+    background-color: lightblue;
+    margin: 8px;
+}
