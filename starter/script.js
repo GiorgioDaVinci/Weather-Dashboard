@@ -110,11 +110,13 @@ $(document).ready(function () {
         let forecastDate = dayjs(forecast.dt_txt).format('MM/DD/YYYY');
         let forecastTemperature = (forecast.main.temp-273.15).toFixed(2);
         let forecastHumidity = forecast.main.humidity;
+        let forecastWind = forecast.wind.speed;
 
         let forecastItem = $("<div class='col-md-2 forecast-item border border-primary'></div> ");
         forecastItem.append("<p><strong>Date: " + forecastDate + "</strong></p>");
         forecastItem.append("<p>Temp: " + forecastTemperature + "°C</p>");
         forecastItem.append("<p>Humidity: " + forecastHumidity + "%</p>");
+        forecastItem.append("<p>Wind: " + forecastWind + "m/s</p>");
 
         $("#forecast").append(forecastItem);
       });
