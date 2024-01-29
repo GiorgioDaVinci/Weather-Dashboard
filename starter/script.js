@@ -32,7 +32,7 @@ $(document).ready(function () {
   function cityWeather(cityName){
     let APIKey = "c8eb07a44e7175d7747d40acd09c89e0";
   let queryURL =
-    "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + ",&limit=1&appid=" +
+    "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + ",&limit=1&appid=" +
     APIKey;
   
   fetch(queryURL)
