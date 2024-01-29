@@ -6,6 +6,8 @@ I created a weather dashboard using the Openweather API to get real time weather
 
 I have been able to learn how to make fetch calls to external APIs and apply what I learnt by building a real world project that can be used by consumers.
 
+Here is the link to the deployed application: https://giorgiodavinci.github.io/Weather-Dashboard/#
+
 ## Installation
 
 No installation required. All you need is a browser with functional internet connection to access the site.
