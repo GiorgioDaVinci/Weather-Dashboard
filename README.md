@@ -29,5 +29,10 @@ On the left-hand side, the user's search history is saved so they know what city
 
 md
     ![alt text](assets/dashboard-history.png)
+
+
+## License
+
+MIT
     
     
