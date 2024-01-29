@@ -1,3 +1,4 @@
+// This logic makes sure that the html elements are ready before loading the javascript file
 $(document).ready(function () {
 
   // Loads search history from local storage
@@ -61,7 +62,7 @@ $(document).ready(function () {
       // Gets the current date using Day.js
       let currentDate = dayjs().format('MMMM D, YYYY');
   
-      // Displays the date
+      // Displays the date and I made it bold using strong
       $("#today").append("<p><strong>Date: " + currentDate + "</strong></p>");
   
       // Assumes that the first item in the list array represents current weather
@@ -87,7 +88,7 @@ $(document).ready(function () {
 
         
 
-        // To display the weather icon
+        // This display the weather icon
         if(currentWeather.weather && currentWeather.weather[0] && currentWeather.weather[0].icon){
           let weatherIcon = "<img src='https://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + ".png' alt='Weather Icon'>";
           $("#today").append(weatherIcon);
@@ -109,7 +110,7 @@ $(document).ready(function () {
       let forecastList = data.list;
 
       $("#forecast").empty();
-      $("#forecast").append("<h2> 5-Day Forecast</h2>");
+      $("#forecast").append("<h2 class = text-center> 5-Day Forecast</h2>");
       
       //This variables filters the forecast list for entries with time 12:00:00
       let filteredForecast = forecastList.filter(entry => entry.dt_txt.includes("12:00:00"));
