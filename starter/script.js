@@ -51,7 +51,7 @@ $(document).ready(function () {
   function updateUI(data) {
     console.log('Received data:', data);
   
-    if ( data.list.length > 0 && data.city) {
+    if (data.list.length > 0 && data.city) {
       let cityInfo = data.city;
   
       // Displays city name
